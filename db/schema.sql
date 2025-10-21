@@ -10,7 +10,7 @@ CREATE TABLE disclosures (
     raw_extraction JSONB, 
     public_planned BOOLEAN DEFAULT FALSE,
     public_venue TEXT,
-    public_date DATE,
+    public_date TIMESTAMPTZ,
     created_at TIMESTAMPTZ DEFAULT NOW(),
     updated_at TIMESTAMPTZ DEFAULT NOW()
 );
