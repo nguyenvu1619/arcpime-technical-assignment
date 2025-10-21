@@ -11,5 +11,21 @@ services:
       - data:/var/lib/postgresql/data
       - ./db/schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
 
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    command: ["redis-server", "--save", "", "--appendonly", "no"]
+
+  pinecone:
+    image: ghcr.io/pinecone-io/pinecone-local:latest
+    container_name: disclosures-index
+    environment:
+      PORT: 5080
+      PINECONE_HOST: localhost
+    ports:
+      - "5080-5090:5080-5090"
+    platform: linux/amd64
+
 volumes:
   data:

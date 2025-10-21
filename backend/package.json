@@ -6,14 +6,34 @@
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "build": "tsc",
-    "start": "node dist/index.js"
+    "start": "node dist/index.js",
+    "deploy:s3": "dotenv -e .env -- aws cloudformation deploy --stack-name pdf-storage-stack --template-file ../cloudformation/s3-bucket-template.yaml --capabilities CAPABILITY_NAMED_IAM"
   },
   "dependencies": {
-    "express": "^5.1.0"
+    "@aws-sdk/client-s3": "^3.645.0",
+    "@aws-sdk/s3-request-presigner": "^3.645.0",
+    "@pinecone-database/pinecone": "^5.0.0",
+    "bullmq": "^5.29.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^5.1.0",
+    "file-type": "^21.0.0",
+    "ioredis": "^5.4.1",
+    "openai": "^6.3.0",
+    "pdf-parse": "^2.3.12",
+    "pg": "^8.16.3",
+    "pg-hstore": "^2.3.4",
+    "qpdf": "^0.1.0-prealpha.1",
+    "sequelize": "^6.37.7",
+    "zod": "^4.1.12"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.17",
     "@types/express": "^5.0.3",
     "@types/node": "^22.18.8",
+    "@types/pdf-parse": "^1.1.5",
+    "@types/pg": "^8.15.5",
+    "dotenv-cli": "^7.3.0",
     "tsx": "^4.20.6",
     "typescript": "^5.9.3"
   }
